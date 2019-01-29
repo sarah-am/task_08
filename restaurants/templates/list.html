@@ -6,11 +6,17 @@
 <br>
 <div class="row">
     {% for restaurant in restaurants %}
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
+      <div class="card-group">
         <div class="card my-card">
           <div class="card-body">
-            <h5 class="card-title">{{restaurant.name}}</h5>
-            <p class="card-text">{{restaurant.description|truncatechars:25}}</p>
+            <h5 class="card-title"><strong>{{restaurant.name}}</strong></h5>
+             {% if restaurant.logo %}
+             <img src="{{restaurant.logo.url}}" alt="logo" width=150 height=150 class="img-fluid rounded mx-auto d-block">
+            {% else %}
+            <p> </p>
+            {% endif %}
+            <p class="card-text">{{restaurant.description|truncatechars:50}}</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center">
@@ -18,8 +24,8 @@
             </li>
           </ul>
         </div>
+      </div>
     </div>
     {% endfor %}
 </div>
 {% endblock content %}
-
